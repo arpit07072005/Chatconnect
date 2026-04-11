@@ -1,0 +1,12 @@
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+  overflow-x:hidden;
+  font-family: 'Poppins', sans-serif;
+}
+label{
+  cursor: pointer;
+  color: #1F2937;
+  font-weight:600;
+}

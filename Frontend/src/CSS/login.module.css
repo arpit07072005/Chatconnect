@@ -1,0 +1,397 @@
+
+.loginContainer{
+    height: 100vh;
+    width: 100%;
+    background-color:#FFF5EE ;
+    position: relative;
+    padding-bottom: 40px;
+}
+a{
+    text-decoration: none;
+    color: #FF6B2B;
+}
+
+.containerCircle{
+    width: 25vw;
+    height:25vw;
+    border-radius: 50%;
+    background-color: #FFB899;
+    opacity: 40%;
+    position: absolute;
+    top: -5vw;
+    right:-4vw;
+}
+
+.containerMCircle{
+    width: 50%;
+    height:50%;
+    border-radius: 50%;
+    background-color: #FFB899;
+    opacity: 20%;
+    position: absolute;
+    bottom: 0%;
+    left:15%;
+}
+.loginImage{
+    background-image: url(../assets/undraw_online.svg);
+    width: 60%;
+    height: 40%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    bottom: 40%;
+    left:25%;
+    z-index: 99;
+}
+
+.imageContainer{
+    top: 30%;
+    left: 12%;
+    height: 30vw;
+    width: 30vw;
+    border:2px solid #f6f6f6;
+    position: fixed;
+}
+.motion1{
+    height: 8%;
+    width: 7%;
+    position: fixed;
+    left: 8%;
+    top: 25%;
+    background-color: #FFB899;
+    border-radius: 9999px;
+    opacity: 40%;
+}
+.motion2{
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    left: 15%;
+    top: 40%;
+    background-color: #23aa52;
+    border-radius: 50%;
+    background-image: url(../assets/message-square.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.motion3{
+    height: 8%;
+    width: 4%;
+    position: fixed;
+    right: 58%;
+    top: 33%;
+    background-color: #FF6B2B;
+    border-radius: 50%;
+    background-image: url(../assets/send.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.motion4{
+    height: 8%;
+    width: 4%;
+    background-image: url(../assets/heart.svg);
+    background-position: center;
+    background-size: contain;
+    position: fixed;
+    right: 58%;
+    top: 50%;
+    border-radius: 50%;
+}
+.motion5{
+    height: 7%;
+    width: 6%;
+    position: fixed;
+    left: 32%;
+    top: 62%;
+    background-color: #dadada;
+    border-radius: 9999px;
+    opacity: 40%;
+}
+.logoContainer{
+    /* height: 10%; */
+    /* width: 35%; */
+    /* border: 2px solid black; */
+    position: fixed;
+    left: 8%;
+    top: 8%;
+    display: flex;
+    justify-content: center;
+     align-items: center;
+     gap: 18px;
+     
+}
+.logo{
+  width: clamp(4rem,5vw,5rem);
+  aspect-ratio: 1/1;
+  background-color: #FF6B2B;
+  border-radius: 25%;
+  background-image: url(../assets/message-circle.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:40px;
+
+}
+.logoName,.welcome{
+    color: #1F2937;
+    font-weight: bold;
+    font-size: clamp(30px, 2.5vw, 50px);
+    display: flex;
+    flex-direction: column;
+}
+.logoName span,.subHeading{
+    color: #9CA3AF;
+    font-size: clamp(18px, 1vw, 30px);
+    font-weight: 500;
+}
+.loginForm{
+    background-color: #FFFFFF;
+    height: auto;
+    min-width: 32%;
+    position: absolute;
+    right: 8%;
+    top: 5%;
+    border-radius: 15px;
+    padding: 2.3% 3%;
+    display: flex;
+    flex-direction: column;
+    /* max-height: 90vh; */
+    /* overflow-y: auto; */
+}
+.welcome{
+font-size: 30px;
+}
+.subHeading{
+    font-size: medium;
+    margin-top: 2%;
+    margin-bottom: 5%;
+
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5%;
+    position: relative;
+}
+.inputLogoEmail,.inputLogoPassword,.inputLogoPerson,.inputLogoPhone{
+    background-image: url(../assets/mail.svg);
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.inputLogoPassword{
+    background-image: url(../assets/lock.svg);
+}
+.inputLogoPerson{
+    background-image: url(../assets/user.svg);
+}
+.inputLogoPhone{
+    background-image: url(../assets/phone.svg);
+}
+ .inputContainer input{
+    background: transparent;
+     outline: none;
+     border: none;
+     width: 100%;
+     font-size:16px;
+}
+.inputContainer{
+padding: 3.8%;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    font-size: 15px;
+    border:2px solid #e2e9f6;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+
+}
+.forgetContainer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+.remember{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    color: #9CA3AF;
+    font-weight: 500;
+}
+.remember input{
+    cursor: pointer;
+     height: 18px;
+     width: 18px;
+}
+.inputContainer:focus-within {
+  outline: none;
+  border: 2px solid #FF6B2B;
+  background-color: transparent;
+}
+.forgot{
+    color: #FF6B2B;
+    cursor: pointer;
+    font-weight: 500;
+}
+.button{
+    margin-top: 8%;
+    cursor: pointer;
+    padding: 5%;
+    background-color: #FF6B2B;
+    border-radius: 10px;
+     color: #f6f6f6;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-weight: 600;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+.button:hover {
+    transform: scale(1.04);
+    transition: transform 0.1s ease;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color:#9CA3AF;
+  margin-top: 5%;
+
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #E5E7EB;
+}
+.googleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8%;
+    margin-top: 5%;
+}
+.google,.apple{
+    width: 45%;
+    height: 50px;
+    border: 2px solid #9ca3af54;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+.google:hover,.apple:hover{
+    background-color:#ffb8993b;
+    outline: none;
+  border: 2px solid #FF6B2B;
+}
+.googleLogo,.appleLogo{
+    background-image: url(../assets/icons8-google.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+}
+.appleLogo{
+    background-image: url(../assets/icons8-apple.svg);
+}
+.googleName{
+    color: #1F2937;
+    font-weight: 600;
+}
+.signup{
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #9CA3AF;
+}
+.signup span{
+    margin-left: 2%;
+    color: #FF6B2B;
+    cursor: pointer;
+    font-weight: 600;
+}
+.layoutList{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    position: fixed;
+    bottom: 6%;
+    left: 18%;
+    gap: 20px;
+}
+
+@media screen and (max-width:768px){
+    .layoutList{
+        display:none;
+    }
+    .imageContainer{
+        display: none;
+    }
+    .logoContainer{
+        position:static;
+        margin-top: 5%
+    }
+    .loginForm{
+        position: static ;
+         width: 85%;
+        max-width: 400px;
+        margin-top: 3%;
+        padding: 5%;
+    }
+    .loginContainer{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+    .logoName span{
+        display: none;
+    }
+    .logoName,.welcome{
+    font-size: clamp(20px, 3.5vw, 50px);
+}
+.logo{
+            width: clamp(3.5rem, 8.5vw, 6rem)
+}
+.subHeading{
+    font-size: 14px;
+}
+
+}
+
+
+.list1{
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    gap: 12px;
+}
+.logo1,.logo2,.logo3{
+    width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-image: url(../assets/message-circle-more.svg);
+    background-repeat: no-repeat;
+    background-color: #FFB899;
+    background-position: center;
+}
+.logo2{
+    background-color: #8be38b5a;
+background-image: url(../assets//sparkle.svg);
+}
+.logo3{
+    background-color: #81a3f364;
+background-image: url(../assets/lock1.svg);
+}
