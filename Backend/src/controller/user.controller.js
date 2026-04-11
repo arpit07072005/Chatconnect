@@ -42,8 +42,8 @@ const userRegister= async (req,res)=>{
     const accessToken=findUser.generateAccessToken();
     const option={
       httpOnly:true,
-      secure:false,
-      sameSite:"lax",
+      secure:true,
+      sameSite:"none",
       maxAge: 24*60*60*1000
     }
  const loggedinUser = await User.findById(findUser._id).select("-password");
