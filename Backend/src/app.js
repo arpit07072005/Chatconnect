@@ -5,7 +5,7 @@ import cors from 'cors'
 import cookieParser from "cookie-parser";
 const app =express();
  app.use(cors({
-     origin:'https://chatconnect-ten.vercel.app/',
+     origin:'https://chatconnect-ten.vercel.app',
      credentials: true
  }))
  app.set("trust proxy",1)
