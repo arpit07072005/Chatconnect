@@ -10,7 +10,7 @@ function Login() {
   const navigate= useNavigate();
   const handleLogin=async()=>{
     try {
-      const response= await axios.post('http://localhost:5000/api/u/login',{
+      const response= await axios.post('https://chatconnect-no7s.onrender.com/api/u/login',{
         email:email,
         password:password
       },{ withCredentials: true })

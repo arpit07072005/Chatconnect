@@ -25,7 +25,7 @@ function Chat() {
     useEffect(()=>{
       const handleFriends=async()=>{
         try {
-            const response=await axios.get("http://localhost:5000/api/message/getfriends",{withCredentials:true})
+            const response=await axios.get("https://chatconnect-no7s.onrender.com/api/message/getfriends",{withCredentials:true})
             setFriends(response.data.friends);
         } catch (error) {
             console.log(error)
@@ -46,7 +46,7 @@ function Chat() {
             return; 
            }
        try {
-        const response=await axios.post('http://localhost:5000/api/message/sendmessage',{
+        const response=await axios.post('https://chatconnect-no7s.onrender.com/api/message/sendmessage',{
             message:message,
             receiverID:recieverID._id
         },{ withCredentials: true })
@@ -64,7 +64,7 @@ function Chat() {
         setConversationId(fr._id);
           setLoadingMessages(true); 
          try {
-            const response=await axios.get(`http://localhost:5000/api/message/get/${fr._id}`,{
+            const response=await axios.get(`https://chatconnect-no7s.onrender.com/api/message/get/${fr._id}`,{
                withCredentials: true
             })
         setGetmessage(response.data.data);
@@ -76,7 +76,7 @@ function Chat() {
     }
     const handleAddFriend=async()=>{
         try {
-            const response=await axios.post("http://localhost:5000/api/message/addfriends",{
+            const response=await axios.post("https://chatconnect-no7s.onrender.com/api/message/addfriends",{
                 email:friendEmail
             },{withCredentials:true});
             console.log(response);
@@ -91,7 +91,7 @@ function Chat() {
     }
     const handledeletechat=async()=>{
         try {
-            const response=await axios.post("http://localhost:5000/api/message/deletemessage",{
+            const response=await axios.post("https://chatconnect-no7s.onrender.com/api/message/deletemessage",{
               conversationId:conversationId
             },{withCredentials:true});
             toast.success(response.data.message);

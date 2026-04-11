@@ -16,7 +16,7 @@ function Signup() {
   return;
 }
    try {
-    const response= await axios.post('http://localhost:5000/api/u/register',{
+    const response= await axios.post('https://chatconnect-no7s.onrender.com/api/u/register',{
      name:name,
      email:email,
      mobileNumber:number,
