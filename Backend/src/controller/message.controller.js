@@ -1,6 +1,7 @@
  import { Message } from "../models/message.model.js";
  import { Conversation } from "../models/conversation.model.js";
  import { User } from "../models/user.model.js";
+ import { io,users } from "../index.js";
  const newFriend=async(req,res)=>{
   try {
     const {email}=req.body;
@@ -60,6 +61,10 @@
         conversation.lastMessage=message;
         conversation.lastMessageSender=senderID;
         await conversation.save();
+        const recieverSocketId=users[receiverID.toString()];
+        if(recieverSocketId){
+          io.to(recieverSocketId).emit("newMessage",text);
+        }
         return res.status(201).json({message:text});
     } catch (err) {
         return res.status(500).json({error:err.message});
