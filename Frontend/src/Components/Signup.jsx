@@ -81,7 +81,7 @@ function Signup() {
                  <div className={styles.googleName}>Apple </div>
                </div>
              </div>
-             <div className={styles.signup}>Don't have an account?  <span><Link to='/'>Sign In</Link></span></div>
+             <div className={styles.signup}>Don't have an account?  <span><Link to='/login'>Sign In</Link></span></div>
             </div>
 
       </LayoutLogin>

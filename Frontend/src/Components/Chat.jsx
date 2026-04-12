@@ -163,7 +163,7 @@ function Chat() {
       );
       setLoginUser(response.data.message);
     } catch (error) {
-    //   navigate("/login");
+      navigate("/login");
     }
   };
   fetchUser();
