@@ -38,10 +38,10 @@ function Chat() {
                 console.log("JOIN SENT:", user._id);
             }
         });
-        // return () => {
-        //     socket.current.disconnect();
-        // };
-    }, []);
+        return () => {
+            socket.current.disconnect();
+        };
+    }, [conversationId]);
     useEffect(() => {
         if (!socket.current) return;
 
