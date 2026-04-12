@@ -55,7 +55,7 @@ function Chat() {
         return () => {
             socket.current.off("newMessage");
         };
-    }, [msg.conversationId?.toString() === conversationId?.toString()]);
+    }, [conversationId]);
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [getmessage]);
