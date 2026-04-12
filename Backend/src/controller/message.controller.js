@@ -65,6 +65,10 @@
         if(recieverSocketId){
           io.to(recieverSocketId).emit("newMessage",text);
         }
+        const senderSocketId = users[senderID.toString()];
+        if (senderSocketId) {
+          io.to(senderSocketId).emit("newMessage", text);
+          }
         return res.status(201).json({message:text});
     } catch (err) {
         return res.status(500).json({error:err.message});
