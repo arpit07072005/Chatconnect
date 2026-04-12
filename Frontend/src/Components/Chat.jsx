@@ -46,9 +46,10 @@ function Chat() {
         if (!socket.current) return;
 
         socket.current.on("newMessage", (msg) => {
-            console.log("New message received:", msg);
-
+            // console.log("New message received:", msg);
+          if (msg.conversationId === conversationId) {
             setGetmessage((prev) => [msg, ...prev]);
+                }
         });
 
         return () => {
@@ -75,6 +76,7 @@ function Chat() {
         if (friends.length > 0) {
             setRecieverID(friends[0].friend);
             handleFriend(friends[0]);
+          setShowChat(false);
         }
     }, [friends]);
     const handleSend = async () => {
@@ -161,7 +163,7 @@ function Chat() {
       );
       setLoginUser(response.data.message);
     } catch (error) {
-      navigate("/login");
+    //   navigate("/login");
     }
   };
   fetchUser();
