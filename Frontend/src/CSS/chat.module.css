@@ -106,6 +106,21 @@ overflow: hidden;
     font-weight: 500;
 }
 
+.profile{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1% 4%;
+    width: 100%;
+    margin-bottom: 4%;
+    padding-top: 3%;
+    border-top: 0.5px solid #E5E5E5;
+    /* background-color: #FFF5EE; */
+    font-size: clamp(18px, 2.3vw, 50px);
+}
 .rightContainer{
     width: 72%;
     background-color: #FFF5EE;
@@ -138,7 +153,7 @@ overflow: hidden;
     gap: 10px;
 
 }
-.audio,.video,.menu,.menu1,.back,.sendButton,.emptyIcon{
+.audio,.video,.menu,.menu1,.back,.sendButton,.emptyIcon,.logout,.setting{
     background-image: url(../assets/phone.svg);
     background-repeat: no-repeat;
 
@@ -165,6 +180,19 @@ cursor: not-allowed;
 }
 .menu{
     background-image: url(../assets/ellipsis.svg);
+}
+.logout{
+    background-image: url(../assets/log-out.svg);
+    border: none;
+}
+.setting{
+  background-image: url(../assets/settings.svg);
+    border: none;   
+}
+.logoutContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .menu1{
     background-image: url(../assets/ellipsis-vertical.svg);
