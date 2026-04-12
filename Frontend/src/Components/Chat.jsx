@@ -38,9 +38,9 @@ function Chat() {
                 console.log("JOIN SENT:", user._id);
             }
         });
-        return () => {
-            socket.current.disconnect();
-        };
+        // return () => {
+        //     socket.current.disconnect();
+        // };
     }, []);
     useEffect(() => {
         if (!socket.current) return;
