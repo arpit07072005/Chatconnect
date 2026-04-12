@@ -41,13 +41,13 @@ function Chat() {
         return () => {
             socket.current.disconnect();
         };
-    }, [conversationId]);
+    }, []);
     useEffect(() => {
         if (!socket.current) return;
 
         socket.current.on("newMessage", (msg) => {
             // console.log("New message received:", msg);
-          if (msg.conversationId === conversationId) {
+          if (msg.conversationId?.toString() === conversationId?.toString()) {
             setGetmessage((prev) => [msg, ...prev]);
                 }
         });
@@ -55,7 +55,7 @@ function Chat() {
         return () => {
             socket.current.off("newMessage");
         };
-    }, []);
+    }, [msg.conversationId?.toString() === conversationId?.toString()]);
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [getmessage]);
