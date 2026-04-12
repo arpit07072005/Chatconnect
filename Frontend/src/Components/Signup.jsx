@@ -69,10 +69,6 @@ function Signup() {
                 <input type='password' id='password' value={password} placeholder='Enter your password' onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
              </div>
-             <div className={styles.forgetContainer}>
-               <div className={styles.remember}><input type="checkbox" />Remember me</div>
-               <div className={styles.forgot}>Forgot Password?</div>
-             </div>
              <div className={styles.button} onClick={handleSubmit}>Create Account</div>
              <div class={styles.divider}>or continue with</div>
              <div className={styles.googleContainer}>
