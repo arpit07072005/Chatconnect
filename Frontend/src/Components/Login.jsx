@@ -14,6 +14,7 @@ function Login() {
         email:email,
         password:password
       },{ withCredentials: true })
+       localStorage.setItem("user", JSON.stringify(response.data.user));
       toast.success(response.data.message);
       setEmail("");
       setPassword("");

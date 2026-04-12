@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { io } from 'socket.io-client';
 function Chat() {
     const bottomRef = useRef(null);
     const [message,setMessage]=useState("");
@@ -19,8 +20,38 @@ function Chat() {
     const [conversationId, setConversationId] = useState();
     const [loadingFriends, setLoadingFriends] = useState(true);
     const [loadingMessages, setLoadingMessages] = useState(false);
+    const socket = useRef(null);
     useEffect(() => {
-  bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  socket.current = io("https://chatconnect-no7s.onrender.com", {
+    withCredentials: true
+  });
+  console.log("Socket connected");
+  return () => {
+    socket.current.disconnect();
+  };
+}, []);
+const user = JSON.parse(localStorage.getItem("user"));
+
+useEffect(() => {
+  if (!socket.current || !user?._id) return;
+  socket.current.emit("join", user._id);
+  console.log("Joined with:", user._id);
+}, [user]);
+useEffect(() => {
+  if (!socket.current) return;
+
+  socket.current.on("newMessage", (msg) => {
+    console.log("New message received:", msg);
+
+    setGetmessage((prev) => [msg, ...prev]);
+  });
+
+  return () => {
+    socket.current.off("newMessage");
+  };
+}, []);
+    useEffect(() => {
+        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
 }, [getmessage]);
     useEffect(()=>{
       const handleFriends=async()=>{
@@ -50,7 +81,7 @@ function Chat() {
             message:message,
             receiverID:recieverID._id
         },{ withCredentials: true })
-        toast.success(response.data.message);
+        // toast.success(response.data.message);
         console.log(response.data)
            setMessage("");
        } catch (error) {
