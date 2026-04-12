@@ -51,4 +51,24 @@ const userRegister= async (req,res)=>{
     .cookie("accessToken",accessToken,option)
     .json({message:"User LoggedIn Successfully",user:loggedinUser,accessToken:accessToken});
  }
-export {userRegister,userLogin}
+ const getUser=async(req,res)=>{
+   try {
+      const user=req.user;
+      res.status(200).json({message:user});
+   } catch (error) {
+       return res.status(500).json({ error: "Server error" });
+   }
+ }
+ const userLogout=async(req,res)=>{
+   try {
+    const  option={
+      httpOnly:true,
+      sameSite:"none",
+      secure:true
+      }
+      return res.status(200).clearCookie('accessToken',option).json({message:"logout succesfully"});
+   } catch (error) {
+       return res.status(500).json({ error: "Server error" });
+   }
+ }
+export {userRegister,userLogin,getUser,userLogout}
