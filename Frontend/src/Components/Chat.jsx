@@ -21,22 +21,25 @@ function Chat() {
     const [loadingFriends, setLoadingFriends] = useState(true);
     const [loadingMessages, setLoadingMessages] = useState(false);
     const socket = useRef(null);
-    useEffect(() => {
+   useEffect(() => {
   socket.current = io("https://chatconnect-no7s.onrender.com", {
     withCredentials: true
   });
-  console.log("Socket connected");
+
+  socket.current.on("connect", () => {
+    console.log("Socket connected");
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user?._id) {
+      socket.current.emit("join", user._id);
+      console.log("JOIN SENT:", user._id);
+    }
+  });
   return () => {
     socket.current.disconnect();
   };
 }, []);
-const user = JSON.parse(localStorage.getItem("user"));
-
-useEffect(() => {
-  if (!socket.current || !user?._id) return;
-  socket.current.emit("join", user._id);
-  console.log("Joined with:", user._id);
-}, [user]);
 useEffect(() => {
   if (!socket.current) return;
 
