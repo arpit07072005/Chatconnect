@@ -231,7 +231,12 @@ const handleLogout=async()=>{
                     ))
                     ) : (friends.map((fr) => (
                         <div className={`${styles.friend} ${recieverID?._id === fr.friend._id ? styles.activeFriend : ""}`} key={fr.friend._id} onClick={() => handleFriend(fr)}>
-                            <div className={styles.user} style={{ backgroundColor: getColor(fr.friend.name) }}>{fr.friend.name[0]}</div>
+                            <div className={styles.user} style={{ backgroundColor: getColor(fr.friend.name) }}>
+                                 {fr.friend?.backgroundImage ? (
+                              <img src={fr.friend.backgroundImage} className={styles.profileImg} /> ) : (
+                       fr.friend?.name?.[0]
+                             )}
+                                </div>
                             <div className={styles.nameContainer}>
                                 <div className={styles.friendName}>{fr.friend.name}</div>
                                 <div className={styles.lastMessage}>{fr.lastMessage}</div>
@@ -242,8 +247,14 @@ const handleLogout=async()=>{
                 </div>
                 <div className={styles.profile}>
                     {loginUser&&(
+                        
                     <div className={styles.name}>
-                        <div className={styles.user}>{loginUser.name.charAt(0)}</div>
+                        <div className={styles.user}>
+                            {loginUser?.backgroundImage ? (
+                              <img src={loginUser.backgroundImage} className={styles.profileImg} />  ) : (
+                     loginUser?.name?.charAt(0)
+                      )}
+                            </div>
                         <div className={styles.logoName}>{loginUser.name}</div>
                     </div>
                     )}
@@ -257,7 +268,13 @@ const handleLogout=async()=>{
                 <div className={styles.logo1}>
                     <div className={styles.name}>
                         <div className={styles.back} onClick={() => setShowChat(false)}></div>
-                        <div className={styles.user} style={{ backgroundColor: getColor(recieverID?.name) }}>{recieverID?.name?.[0]}</div>
+                        <div className={styles.user} style={{ backgroundColor: getColor(recieverID?.name) }}>
+                            {recieverID?.backgroundImage ? (
+    <img
+      src={recieverID.backgroundImage} className={styles.profileImg}  /> ) : (
+    recieverID?.name?.[0]
+  )}
+                            </div>
                         <div className={styles.friendName}>{recieverID.name}</div>
                     </div>
                     <div className={styles.callContainer}>

@@ -331,6 +331,13 @@ padding: 3.8%;
     gap: 20px;
 }
 
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 @media screen and (max-width:768px){
     .layoutList{
         display:none;
@@ -354,7 +361,7 @@ padding: 3.8%;
         /* justify-content: center; */
         flex-direction: column;
         align-items: center;
-        height: auto;
+        height: 100vh;
         padding-top: 5%;
     }
     .logoName span{
