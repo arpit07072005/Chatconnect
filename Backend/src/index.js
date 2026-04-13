@@ -3,6 +3,7 @@ import connectdb from "./db/db.js";
 import dotenv from "dotenv"
 import { Server } from "socket.io";
 import http from "http"
+import { connectCloudinary } from "./utils/cloudinary.js";
  dotenv.config({
     path:'./.env'
  })
@@ -14,6 +15,7 @@ import http from "http"
         credentials:true
     }
  });
+ connectCloudinary();
  const users={}
  io.on("connection",(socket)=>{
     console.log(`user socket id is ${socket.id}`);
