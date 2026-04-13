@@ -95,7 +95,7 @@ const getConversations = async (req, res) => {
     const conversations = await Conversation.find({
       participants: userId
     })
-    .populate("participants", "name")
+    .populate("participants", "-password")
     .sort({ updatedAt: -1 });
     const formatted = conversations.map(conv => {
       const friend = conv.participants.find(
