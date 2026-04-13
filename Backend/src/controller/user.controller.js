@@ -14,10 +14,12 @@ const userRegister= async (req,res)=>{
         return res.status(409).json({error:"User Already Exist with the given email or mobile number"});
      }
      const image=req.file;
+     console.log(image);
     let imageUrl = "";
 
 if (image) {
     const response = await uploadOnCloudinary(image.path);
+     console.log(response);
     imageUrl = response?.secure_url || "";
 }
      const newUser=await User.create({
