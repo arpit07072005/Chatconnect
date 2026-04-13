@@ -14,4 +14,4 @@ app.use(express.json())
 app.use("/api/u",router);
 app.use("/api/message",messagerouter)
 
-export default app
+export default app;
