@@ -23,6 +23,9 @@ const UserSchema = new Schema({
      required:true,
      unique:true,
      trim:true
+    },
+    backgroundImage:{
+        type:String,
     }
 },{timestamps:true});
 

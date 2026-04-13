@@ -1,19 +1,28 @@
 import { User } from "../models/user.model.js";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 const userRegister= async (req,res)=>{
    try {
     const {email,name,password,mobileNumber}=req.body;
     if(!email||!name||!password||!mobileNumber){
-        return res.status(410).json({error:"please provide all the details"});
+        return res.status(400).json({error:"please provide all the details"});
     }
      const existedUser=await User.findOne({
        $or: [{ email }, { mobileNumber }]
      });
      if(existedUser){
-        return res.status(400).json({error:"User Already Exist with the given email or mobile number"});
+        return res.status(409).json({error:"User Already Exist with the given email or mobile number"});
      }
+     const image=req.file;
+    let imageUrl = "";
+
+if (image) {
+    const response = await uploadOnCloudinary(image.path);
+    imageUrl = response?.secure_url || "";
+}
      const newUser=await User.create({
-        email,name,password,mobileNumber
+        email,name,password,mobileNumber,
+        backgroundImage:imageUrl
      })
      const createdUser=await User.findById(newUser._id).select(
         "-password"
@@ -24,16 +33,17 @@ const userRegister= async (req,res)=>{
      return res.status(201).json({message:"User Registered SuccesFully"});
      } catch (error) {
       console.log(error);
+        return res.status(500).json({ error: "Server error" });
    }
 }
  const userLogin=async(req,res)=>{
     const {email,password}=req.body;
     if(!email ||!password){
-     return res.status(405).json({error:"Please provide email and password"})
+     return res.status(400).json({error:"Please provide email and password"})
     }
     const findUser=await User.findOne({email});
     if(!findUser){
-        return res.status(405).json({error:"Email is not registered"})
+        return res.status(404).json({error:"Email is not registered"})
     }
     const verifyPassword=await findUser.ispasswordcorrect(password);
     if(!verifyPassword){
