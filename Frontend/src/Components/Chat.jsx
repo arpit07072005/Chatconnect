@@ -238,7 +238,7 @@ const handleLogout=async()=>{
                              )}
                                 </div>
                             <div className={styles.nameContainer}>
-                                <div className={styles.friendName}>{fr.friend.name}</div>
+                                <div className={styles.friendName}>{fr.friend?.name}</div>
                                 <div className={styles.lastMessage}>{fr.lastMessage}</div>
                             </div>
                         </div>
