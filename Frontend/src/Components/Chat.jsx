@@ -73,6 +73,15 @@ function Chat() {
         handleFriends();
     }, [])
     useEffect(() => {
+  if (!socket.current) return;
+  socket.current.on("newFriend", (newFriend) => {
+    setFriends((prev) => [newFriend, ...prev]);
+  });
+  return () => {
+    socket.current.off("newFriend");
+  };
+}, []);
+    useEffect(() => {
         if (friends.length > 0) {
             setRecieverID(friends[0].friend);
             handleFriend(friends[0]);
