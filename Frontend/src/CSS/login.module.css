@@ -250,6 +250,8 @@ padding: 3.8%;
      align-items: center;
      font-weight: 600;
   box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+  border: none;
+  font-size: 17px;
 }
 .button:hover {
     transform: scale(1.04);

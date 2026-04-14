@@ -5,11 +5,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 function Login() {
+  const [loading, setLoading] = useState(false);
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const navigate= useNavigate();
   const handleLogin=async()=>{
     try {
+      setLoading(true);
       const response= await axios.post('https://chatconnect-no7s.onrender.com/api/u/login',{
         email:email,
         password:password
@@ -23,6 +25,8 @@ function Login() {
       },1000)
     } catch (error) {
      toast.error(error.response?.data?.error || "Something went wrong");
+    }finally{
+      setLoading(false);
     }
   }
   return (
@@ -48,7 +52,7 @@ function Login() {
           <div className={styles.remember}><input type="checkbox" />Remember me</div>
           <div className={styles.forgot}>Forgot Password?</div>
         </div>
-        <div className={styles.button} onClick={handleLogin}>Sign In</div>
+        <button className={styles.button} onClick={handleLogin} disabled={loading}>{loading ? "Signing in..." : "Sign In"}</button>
         <div class={styles.divider}>or continue with</div>
         <div className={styles.googleContainer}>
           <div className={styles.google}>

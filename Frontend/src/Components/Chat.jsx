@@ -46,7 +46,6 @@ function Chat() {
         if (!socket.current) return;
 
         socket.current.on("newMessage", (msg) => {
-            // console.log("New message received:", msg);
           if (msg.conversationId?.toString() === conversationId?.toString()) {
             setGetmessage((prev) => [msg, ...prev]);
                 }
@@ -93,13 +92,20 @@ function Chat() {
             return;
         }
         try {
+             let temp={
+                _id: Date.now().toString(),
+                sender: Date.now().toString(),
+                 text: message
+            }
+            let a=message;
+            setGetmessage((prev) => [temp, ...prev]);
+            setMessage("");
             const response = await axios.post('https://chatconnect-no7s.onrender.com/api/message/sendmessage', {
-                message: message,
+                message: a,
                 receiverID: recieverID._id
             }, { withCredentials: true })
             // toast.success(response.data.message);
             console.log(response.data)
-            setMessage("");
         } catch (error) {
             console.log(error.response)
             toast.error(error.response?.data?.error || "someting went wrong");

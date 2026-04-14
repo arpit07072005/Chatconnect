@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 function Signup() {
+    const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [name, setName] = useState("");
@@ -26,6 +27,7 @@ function Signup() {
       return;
     }
     try {
+      setLoading(true);
       const formdata =new FormData();
       formdata.append("name",name);
       formdata.append("email",email);
@@ -50,6 +52,8 @@ function Signup() {
     } catch (error) {
       console.log(error.response)
       toast.error(error.response?.data?.error || "Something went wrong");
+    }finally{
+      setLoading(false);
     }
 
   }
@@ -105,7 +109,7 @@ function Signup() {
             <input type='password' id='password' value={password} placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)} />
           </div>
         </div>
-        <div className={styles.button} onClick={handleSubmit}>Create Account</div>
+        <button className={styles.button} onClick={handleSubmit} disabled={loading}>{loading ? "Creating..." : "Create Account"}</button>
         <div className={styles.divider}>or continue with</div>
         <div className={styles.googleContainer}>
           <div className={styles.google}>
