@@ -29,9 +29,37 @@
     if (existing) {
       return res.status(200).json({ message:"friend is already present" });
     }
-      await Conversation.create({
+    const newCon =await Conversation.create({
       participants:participant
     });
+    const newConversation=await newCon.populate("participants","-password");
+    const senderFormatted = {
+  _id: newConversation._id,
+  friend: newConversation.participants.find(
+    p => p._id.toString() !== senderID.toString()
+  ),
+  lastMessage: "",
+  lastMessageSender: null,
+  updatedAt: newConversation.updatedAt
+};
+
+const receiverFormatted = {
+  _id: newConversation._id,
+  friend: newConversation.participants.find(
+    p => p._id.toString() !== receiverID.toString()
+  ),
+  lastMessage: "",
+  lastMessageSender: null,
+  updatedAt: newConversation.updatedAt
+};
+    const recieverSocketId=users[receiverID.toString()];
+    if(recieverSocketId){
+      io.to(recieverSocketId).emit("newFriend",receiverFormatted);
+    }
+    const senderSocketId=users[senderID.toString()];
+    if(senderSocketId){
+      io.to(senderSocketId).emit("newFriend",senderFormatted);
+    }
      return res.status(201).json({ message: "Friend added"});
   } catch (err) {
     console.log(err);
