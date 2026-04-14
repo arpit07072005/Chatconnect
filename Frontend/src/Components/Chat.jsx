@@ -230,8 +230,8 @@ const handleLogout=async()=>{
                         </div>
                     ))
                     ) : (friends.map((fr) => (
-                        <div className={`${styles.friend} ${recieverID?._id === fr.friend._id ? styles.activeFriend : ""}`} key={fr.friend._id} onClick={() => handleFriend(fr)}>
-                            <div className={styles.user} style={{ backgroundColor: getColor(fr.friend.name) }}>
+                        <div className={`${styles.friend} ${recieverID?._id === fr.friend?._id ? styles.activeFriend : ""}`} key={fr.friend?._id} onClick={() => handleFriend(fr)}>
+                            <div className={styles.user} style={{ backgroundColor: getColor(fr.friend?.name) }}>
                                  {fr.friend?.backgroundImage ? (
                               <img src={fr.friend.backgroundImage} alt='user' className={styles.profileImg} /> ) : (
                        fr.friend?.name?.[0]
