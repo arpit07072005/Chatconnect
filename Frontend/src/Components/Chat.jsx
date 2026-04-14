@@ -233,7 +233,7 @@ const handleLogout=async()=>{
                         <div className={`${styles.friend} ${recieverID?._id === fr.friend._id ? styles.activeFriend : ""}`} key={fr.friend._id} onClick={() => handleFriend(fr)}>
                             <div className={styles.user} style={{ backgroundColor: getColor(fr.friend.name) }}>
                                  {fr.friend?.backgroundImage ? (
-                              <img src={fr.friend.backgroundImage} className={styles.profileImg} /> ) : (
+                              <img src={fr.friend.backgroundImage} alt='user' className={styles.profileImg} /> ) : (
                        fr.friend?.name?.[0]
                              )}
                                 </div>
@@ -251,7 +251,7 @@ const handleLogout=async()=>{
                     <div className={styles.name}>
                         <div className={styles.user}>
                             {loginUser?.backgroundImage ? (
-                              <img src={loginUser.backgroundImage} className={styles.profileImg} />  ) : (
+                              <img src={loginUser.backgroundImage} alt='user'  className={styles.profileImg} />  ) : (
                      loginUser?.name?.charAt(0)
                       )}
                             </div>
@@ -271,7 +271,7 @@ const handleLogout=async()=>{
                         <div className={styles.user} style={{ backgroundColor: getColor(recieverID?.name) }}>
                             {recieverID?.backgroundImage ? (
     <img
-      src={recieverID.backgroundImage} className={styles.profileImg}  /> ) : (
+      src={recieverID.backgroundImage} alt='user'  className={styles.profileImg}  /> ) : (
     recieverID?.name?.[0]
   )}
                             </div>
