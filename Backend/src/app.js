@@ -11,6 +11,9 @@ const app =express();
  app.set("trust proxy",1)
  app.use(cookieParser());
 app.use(express.json())
+app.get("/ping", (req, res) => {
+  res.status(200).send("OK");
+});
 app.use("/api/u",router);
 app.use("/api/message",messagerouter)
 
