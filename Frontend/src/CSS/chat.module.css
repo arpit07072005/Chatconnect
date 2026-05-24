@@ -11,6 +11,8 @@
     border-right: 0.5px solid #E5E5E5;
 height: 100%;
 overflow: hidden;
+display: flex;
+    flex-direction: column;
 }
 .logo,.logo1{
     height: 9.2%;
@@ -74,8 +76,9 @@ overflow: hidden;
 .friends{
     height: 100%;
     width: 100%;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
+    flex: 1;
 }
 .friend{
     height: clamp(58px, 7vw, 72px);
