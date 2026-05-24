@@ -119,11 +119,12 @@ display: flex;
     align-items: center;
     padding: 1% 4%;
     width: 100%;
-    margin-bottom: 4%;
+    margin-bottom: 1%;
     padding-top: 3%;
     border-top: 0.5px solid #E5E5E5;
-    /* background-color: #FFF5EE; */
+    background-color:  rgba(255, 255, 255, 0.882);
     font-size: clamp(18px, 2.3vw, 50px);
+    z-index: 10;
 }
 .rightContainer{
     width: 72%;
