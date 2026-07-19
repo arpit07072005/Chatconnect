@@ -36,7 +36,7 @@ function Signup() {
       if(image){
         formdata.append("image",image);
       }
-      const response = await axios.post('https://chatconnect-no7s.onrender.com/api/u/register',
+      const response = await axios.post('http://localhost:5000/api/u/register',
       formdata
       );
       toast.success(response.data.message)

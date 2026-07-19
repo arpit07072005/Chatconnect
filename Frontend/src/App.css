@@ -4,6 +4,7 @@
   box-sizing: border-box;
   overflow-x:hidden;
   font-family: 'Poppins', sans-serif;
+  user-select: none;
 }
 label{
   cursor: pointer;

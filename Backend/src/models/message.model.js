@@ -15,10 +15,18 @@ const messageSchema=new Schema({
         type:String,
         trim:true
     },
-    seen:{
-        type:Boolean,
-        default:false
-    }
+    image:{
+    type:String,
+    default:""
+},
+status:{
+   type:String,
+   enum:["sent","delivered","read"],
+   default:"sent"
+},
+senderName:{
+   type:String
+}
 
 },{timestamps:true})
 messageSchema.index({ conversationId: 1 })
